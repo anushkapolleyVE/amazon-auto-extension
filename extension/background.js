@@ -1,6 +1,6 @@
 // background.js
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://amazon-auto-extension.onrender.com';
 
 // Listen for messages from content scripts or popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {

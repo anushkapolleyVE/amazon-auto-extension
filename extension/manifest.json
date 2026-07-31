@@ -12,7 +12,7 @@
     "tabs"
   ],
   "host_permissions": [
-    "http://localhost:8000/*",
+    "https://amazon-auto-extension.onrender.com/*",
     "*://*.amazon.com/*",
     "*://*.amazon.in/*",
     "*://*.amazon.co.uk/*"

@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://amazon-auto-extension.onrender.com';
 let currentProductData = null;
 
 // DOM Elements
