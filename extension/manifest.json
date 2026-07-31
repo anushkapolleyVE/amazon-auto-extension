@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Amazon Price Tracker Pro",
+  "version": "1.0.0",
+  "description": "Track Amazon product prices effortlessly and get notified of drops.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "alarms",
+    "notifications",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "*://*.amazon.com/*",
+    "*://*.amazon.in/*",
+    "*://*.amazon.co.uk/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Amazon Price Tracker Pro"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.amazon.com/*",
+        "*://*.amazon.in/*",
+        "*://*.amazon.co.uk/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}

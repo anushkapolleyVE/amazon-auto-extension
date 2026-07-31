@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Price Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo-text">Tracker Pro</h1>
+            <button id="logout-btn" class="btn btn-sm btn-ghost hidden">Logout</button>
+        </header>
+
+        <main class="main-content">
+            <!-- App Navigation (Visible only when logged in) -->
+            <div id="app-nav" class="app-nav hidden">
+                <button class="app-tab active" data-target="dashboard-view">Dashboard</button>
+                <button class="app-tab" data-target="logs-view">Logs</button>
+            </div>
+
+            <!-- Auth View -->
+            <div id="auth-view" class="view hidden">
+                <div class="auth-tabs">
+                    <button class="tab active" data-target="login-form">Login</button>
+                    <button class="tab" data-target="register-form">Register</button>
+                </div>
+
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Sign In</button>
+                    <div id="login-error" class="error-msg"></div>
+                </form>
+
+                <form id="register-form" class="auth-form hidden">
+                    <div class="form-group">
+                        <label for="register-name">Name</label>
+                        <input type="text" id="register-name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Create Account</button>
+                    <div id="register-error" class="error-msg"></div>
+                </form>
+            </div>
+
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view hidden">
+                <!-- Current Product Tracker -->
+                <div id="current-product-section" class="card hidden">
+                    <div class="card-header">
+                        <h2 class="card-title">Current Amazon Product</h2>
+                    </div>
+                    <div class="card-body">
+                        <p id="cp-title" class="truncate-text"></p>
+                        <div class="flex-between mt-2">
+                            <span id="cp-price" class="price-text"></span>
+                            <span id="cp-availability" class="badge"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="cp-target-price">Target Price (Optional)</label>
+                            <input type="text" id="cp-target-price" placeholder="e.g. $19.99">
+                        </div>
+                        <button id="track-btn" class="btn btn-primary w-full mt-3">Track This Product</button>
+                    </div>
+                </div>
+                
+                <div class="tracked-header">
+                    <h2>Tracked Products</h2>
+                    <button id="refresh-btn" class="btn btn-icon">↻</button>
+                </div>
+                
+                <!-- Tracked Products List -->
+                <div id="products-list" class="products-list">
+                    <!-- Product items injected by JS -->
+                    <div class="loading-spinner">Loading...</div>
+                </div>
+            </div>
+
+            <!-- Logs View -->
+            <div id="logs-view" class="view hidden">
+                <div class="tracked-header">
+                    <h2>Event History</h2>
+                    <button id="refresh-logs-btn" class="btn btn-icon">↻</button>
+                </div>
+                <div id="logs-list" class="logs-list">
+                    <!-- Log items injected by JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
